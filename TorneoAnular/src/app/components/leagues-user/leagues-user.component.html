@@ -1,0 +1,75 @@
+<div class="centro">
+  <div class="absolute">
+    <button class="sqare" *ngFor="let lg of league" [routerLink]="['/teams', lg._id]">
+      {{lg.name}}<br>
+      <button title="Editar al Usuario" type="button" class="btn" data-bs-toggle="modal"
+      data-bs-target="#123"(click)="findLeagueId(lg._id)"><i class="fas fa-edit"></i></button>
+
+      <button title="Eliminar Usuario" type="button" class="btn" data-bs-toggle="modal"
+      data-bs-target="#modalDeleteUser" (click)="findLeagueId(lg._id)"><i class="fas fa-trash-alt"></i></button>
+    </button>
+  </div>
+<br><br>
+<div *ngIf="_usersService.getPersona().role == 1">
+  <p class="descript">
+    Añadir ligas a {{_usersService.getPersona().user}}
+  </p>
+  <form class="form">
+    <div class="half">
+      <div class="group">
+        <input type="text" id="nombre" name="name" #name="ngModel" [(ngModel)]="addLeague.name">
+        <label>Nombre de Liga</label>
+      </div>
+    </div>
+    <div class="half">
+      <div class="group">
+        <input type="text" id="email" name="country" #country="ngModel" [(ngModel)]="addLeague.country">
+        <label>Región de Liga</label>
+      </div>
+    </div>
+    <br>
+    <div class="almost-half">
+      <button type="button" class="button buttonBlue" (click)="addLeagueUser()"> Agreagar liga
+        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+      </button>
+    </div>
+  </form>
+</div>
+
+
+</div>
+
+<div class="modal fade" id="123" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="group">
+            <input type="text" id="nombre" name="nombre">
+            <label>Nombre</label>
+          </div>
+          <div class="group">
+            <input type="text" id="usuario" name="password">
+            <label>Usuario</label>
+          </div>
+          <div class="group">
+            <input type="text" id="email" name="email">
+            <label>Email</label>
+          </div>
+          <br>
+            <button type="button" class="button buttonBlue" data-bs-dismiss="modal">Guardar cambios
+              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+            </button>
+            <button type="button" class="bot cancel" data-bs-dismiss="modal">Cancelar
+              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

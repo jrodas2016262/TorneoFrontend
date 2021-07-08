@@ -1,0 +1,132 @@
+<div class="centro">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Goles A.</th>
+        <th scope="col">Golen en C.</th>
+        <th scope="col">Puntos</th>
+        <th scope="col">Juegos</th>
+        <th scope="col">Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let us of team">
+        <td>{{ us.name }}</td>
+        <td>{{ us.goalA }}</td>
+        <td>{{ us.goalC }}</td>
+        <td>{{ us.pts }}</td>
+        <td>{{ us.pj }}</td>
+        <td class="none">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <!-- Editar Usuario -->
+            <button title="Editar al Usuario" type="button" class="btn" data-bs-toggle="modal"
+            data-bs-target="#modalEditUser" (click)="findTeamId(us._id)"><i class="fas fa-edit"></i></button>
+            <!-- Ver detalles del usuario -->
+            <button title="Ver registros de Usuario" type="button" class="btn">
+            <i class="fas fa-plus"></i></button>
+            <!-- Eliminar Usuario -->
+            <button title="Eliminar Usuario" type="button" class="btn" data-bs-toggle="modal"
+            data-bs-target="#modalDeleteUser" (click)="findTeamId(us._id)"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<br><br><br>
+  <p class="descript">
+    Añadir usuarios como Administrador
+  </p>
+  <div class="login-form">
+    <div>
+      <img src="./assets/image/as.jpg." alt="Logo" title="Logo" width="180">
+    </div>
+    <form class="form">
+      <div class="half">
+        <div class="group">
+          <input type="text" id="user" name="name" #name="ngModel" [(ngModel)]="addTeam.name">
+          <label>Nombre del equipo</label>
+        </div>
+      </div>
+      <div class="half">
+        <div class="group">
+          <input type="text" id="email" name="email" #img="ngModel" [(ngModel)]="addTeam.img">
+          <label>URL de imagen</label>
+        </div>
+      </div>
+      <br>
+      <div class="almost-half">
+        <button type="button" class="button buttonBlue">Añadir equipo a liga
+          <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="borde"></div>
+
+</div>
+
+<!-- Modal #Edit User# -->
+<div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Modificar a </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="logo-image">
+            <img src="./assets/image/as.jpg." alt="Logo" title="Logo" width="115">
+          </div>
+          <div class="group">
+            <input type="text" id="nombre" name="user">
+            <label>Username</label>
+          </div>
+          <div class="group">
+            <input type="text" id="usuario" name="email">
+            <label>Email</label>
+          </div>
+          <br>
+            <button type="button" class="button buttonBlue" data-bs-dismiss="modal" (click)="addTeamUser()">Guardar cambios
+              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+            </button>
+            <button type="button" class="bot cancel" data-bs-dismiss="modal">Cancelar
+              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal #Delete User# -->
+<div class="modal fade" id="modalDeleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+
+      <form>
+          <p class="subtitle">¿Desea Eliminar a <!--  --> ?</p>
+          <br>
+        <div class="modal-footer">
+          <button type="button" class="button buttonBlue" data-bs-dismiss="modal"
+            >Si, eliminar
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+          </button>
+          <button type="button" class="bot cancel" data-bs-dismiss="modal">Cancelar
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
